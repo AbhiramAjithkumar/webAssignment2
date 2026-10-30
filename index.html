@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f9fb">
+  <meta name="description"
+    content="Department of Computer Science and Engineering at Federal Institute of Science and Technology (FISAT).">
+  <title>Department of Computer Science and Engineering | FISAT</title>
+  <style>
+    :root {
+      --ink: #172a3a;
+      --blue: #245f82;
+      --blue-dark: #194663;
+      --muted: #5f6f7c;
+      --pale: #eaf2f6;
+      --line: #dce5eb;
+      --paper: #f8f9fb;
+      --white: #fff
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 82px
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+    }
+
+    a {
+      color: var(--blue)
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 40px));
+      margin: auto
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      text-decoration: none;
+      color: var(--ink);
+      line-height: 1.25
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex: none
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 4px
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #3f5260;
+      font-size: 13px;
+      font-weight: 650
+    }
+
+    .nav a:hover {
+      color: var(--blue)
+    }
+
+    .nav .contact-link {
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 15px;
+      border-radius: 7px
+    }
+
+    .nav .contact-link:hover {
+      background: var(--blue-dark)
+    }
+
+    .hero {
+      margin: 30px auto 26px;
+      padding: 52px clamp(24px, 6vw, 64px);
+      background: var(--pale);
+      border: 1px solid #d9e7ee;
+      border-radius: 14px
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      max-width: 750px;
+      margin: 0 0 15px
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #4e626f;
+      margin: 0 0 22px
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      padding: 11px 17px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 14px
+    }
+
+    .button:hover {
+      background: var(--blue-dark)
+    }
+
+    main {
+      padding-bottom: 32px
+    }
+
+    .section {
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .section:last-child {
+      border-bottom: 0
+    }
+
+    .section h2 {
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      margin: 0 0 12px
+    }
+
+    .section p {
+      color: var(--muted);
+      margin: 0 0 14px
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 20px;
+      align-items: start
+    }
+
+    .note {
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 5px
+    }
+
+    .note p {
+      font-size: 14px;
+      margin: 0
+    }
+
+    .subject-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 28px;
+      padding-left: 22px;
+      margin: 15px 0 0
+    }
+
+    .subject-list li {
+      padding: 5px 0 5px 4px
+    }
+
+    .subject-list li::marker {
+      color: var(--blue)
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fff
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 560px
+    }
+
+    caption {
+      text-align: left;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 12px 15px 5px
+    }
+
+    th,
+    td {
+      padding: 11px 15px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px
+    }
+
+    th {
+      background: #f0f5f8;
+      color: #314b5d;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0
+    }
+
+    .facility-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0
+    }
+
+    .facility-list li {
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 650
+    }
+
+    .facility-list li span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 5px
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 35px;
+      align-items: start
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .contact-details a {
+      text-decoration: none
+    }
+
+    .form-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 22px;
+      border-radius: 10px
+    }
+
+    .form-card h3 {
+      font-size: 19px;
+      margin: 0 0 5px
+    }
+
+    .form-card>p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 16px
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid #cbd7df;
+      border-radius: 6px;
+      padding: 10px 11px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: 3px solid #c7e1ef;
+      border-color: var(--blue)
+    }
+
+    .field.full {
+      grid-column: 1/-1
+    }
+
+    .field textarea {
+      min-height: 75px;
+      resize: vertical
+    }
+
+    .form-card button {
+      margin-top: 14px;
+      border: 0;
+      cursor: pointer;
+      font: inherit
+    }
+
+    .form-note,
+    .form-status {
+      font-size: 12px !important;
+      margin: 10px 0 0 !important
+    }
+
+    .form-status {
+      color: var(--blue) !important;
+      font-weight: 700;
+      min-height: 1.3em
+    }
+
+    footer {
+      background: #edf1f4;
+      border-top: 1px solid var(--line);
+      padding: 20px 0;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px
+    }
+
+    .footer-row p {
+      margin: 0
+    }
+
+    .footer-row a {
+      text-decoration: none
+    }
+
+    :focus-visible {
+      outline: 3px solid #8ac0db;
+      outline-offset: 3px
+    }
+
+    @media(max-width:700px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 0
+      }
+
+      .nav {
+        width: 100%;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 2px
+      }
+
+      .nav a {
+        white-space: nowrap
+      }
+
+      .hero {
+        margin-top: 18px;
+        padding: 34px 24px
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .subject-list {
+        grid-template-columns: 1fr
+      }
+
+      .facility-list {
+        grid-template-columns: 1fr
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr
+      }
+
+      .field.full {
+        grid-column: auto
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="top">
+    <div class="container topbar">
+      <a class="brand" href="#top"><img src="images/department-logo.png" alt=""><span>Department of Computer Science and
+          Engineering<small>Federal Institute of Science and Technology (FISAT)</small></span></a>
+      <nav class="nav" aria-label="Main navigation"><a href="#about">About</a><a href="#subjects">Subjects</a><a
+          href="#faculty">Faculty</a><a href="#facilities">Facilities</a><a class="contact-link"
+          href="#contact">Contact</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Federal Institute of Science and Technology (FISAT)</p>
+      <h1 id="page-title">Department of Computer Science and Engineering</h1>
+      <p>Build a strong foundation in computing through practical learning, supportive teaching, and projects that
+        connect theory with real-world problems.</p>
+      <a class="button" href="#subjects">Explore our subjects</a>
+    </section>
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div>
+          <h2>About the department</h2>
+          <p>The Department of Computer Science and Engineering at FISAT combines classroom learning, laboratory
+            practice, and collaborative projects to help students build strong computing skills. The department was
+            established in 2002 and offers undergraduate, postgraduate, and research pathways.</p>
+          <p>We encourage curiosity, clear problem-solving, and responsible use of technology.</p><a
+            href="https://fisat.ac.in/department/computer-science-and-engineering/" target="_blank" rel="noopener">Visit
+            the official college website</a> · <a href="https://fisat.ac.in/" target="_blank" rel="noopener">FISAT
+            website</a>
+        </div>
+        <aside class="note"><strong>Learning by doing</strong>
+          <p>Students practise concepts in labs and apply them in team assignments and final-year projects.</p>
+        </aside>
+      </div>
+    </section>
+    <section class="section" id="subjects">
+      <h2>Subjects offered</h2>
+      <p>Core subjects introduce key areas of computer science and engineering.</p>
+      <ul class="subject-list">
+        <li>Web Programming</li>
+        <li>Artificial Intelligence</li>
+        <li>Machine Learning</li>
+        <li>Object-Oriented Programming</li>
+        <li>Operating Systems</li>
+      </ul>
+    </section>
+    <section class="section" id="faculty">
+      <h2>Faculty</h2>
+      <p>These sample faculty records show the requested table format. Replace them with current details from the
+        official faculty page before publication.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Faculty members and areas of specialization</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Designation</th>
+              <th scope="col">Area of specialization</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dr. Ananya Rao</td>
+              <td>Professor and Head</td>
+              <td>Artificial Intelligence</td>
+            </tr>
+            <tr>
+              <td>Dr. Vikram Shah</td>
+              <td>Associate Professor</td>
+              <td>Data Science</td>
+            </tr>
+            <tr>
+              <td>Ms. Meera Nair</td>
+              <td>Assistant Professor</td>
+              <td>Web Technologies</td>
+            </tr>
+            <tr>
+              <td>Mr. Arjun Menon</td>
+              <td>Assistant Professor</td>
+              <td>Computer Networks</td>
+            </tr>
+            <tr>
+              <td>Dr. Sara Joseph</td>
+              <td>Assistant Professor</td>
+              <td>Cybersecurity</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section" id="facilities">
+      <h2>Facilities</h2>
+      <p>Students have access to spaces for practical work and collaboration.</p>
+      <ul class="facility-list">
+        <li>Programming laboratories<span>Software development and practical sessions</span></li>
+        <li>Networking laboratory<span>Computer networks and systems practice</span></li>
+        <li>Project workspace<span>Team projects, study, and discussion</span></li>
+      </ul>
+    </section>
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <div>
+          <h2>Contact the department</h2>
+          <p>For programme details or admissions questions, contact the department team.</p>
+          <div class="contact-details"><a href="mailto:hodcse@fisat.ac.in">hodcse@fisat.ac.in</a>
+
+            href="tel:1234567891">1234567891</a><span>Hormis Nagar, Mookkannoor P.O., Angamaly, Ernakulam,
+              Kerala 683 577</span><a href="https://fisat.ac.in/ug-programs/" target="_blank" rel="noopener">FISAT
+              undergraduate programmes</a></div>
+        </div>
+        <form class="form-card" id="enquiry-form">
+          <h3>Student enquiry</h3>
+          <p>Share your details and course preference.</p>
+          <div class="form-grid">
+            <div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name"
+                required></div>
+            <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email"
+                autocomplete="email" required></div>
+            <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel"
+                autocomplete="tel"></div>
+            <div class="field"><label for="course">Course preference *</label><select id="course" name="course"
+                required>
+                <option value="">Select a programme</option>
+                <option>B.Tech Computer Science and Engineering</option>
+                <option>B.Tech Computer Science and Design</option>
+                <option>M.Tech Artificial Intelligence and Data Science</option>
+                <option>Ph.D. Computer Science and Engineering</option>
+              </select></div>
+            <div class="field full"><label for="message">Question</label><textarea id="message"
+                name="message"></textarea></div>
+          </div><button class="button" type="submit">Submit enquiry</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+        </form>
+      </div>
+    </section>
+  </main>
+  <script>document.querySelector('#enquiry-form').addEventListener('submit', event => { event.preventDefault(); document.querySelector('#form-status').textContent = 'Thank you. This sample form has not sent or stored your enquiry.'; event.currentTarget.reset() });</script>
+</body>
+
+</html>
